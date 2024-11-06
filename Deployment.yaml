@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ccmidterm-deployment
+  labels:
+    app: ccmidterm-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: ccmidterm-app
+  template:
+    metadata:
+      labels:
+        app: ccmidterm-app
+    spec:
+      containers:
+        - name: ccmidterm-container
+          image: ashhyeong/ccmidterm:latest
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              memory: "512Mi"
+              cpu: "100m"
+            limits:
+              memory: "512Mi"
+              cpu: "100m"
